@@ -1,5 +1,14 @@
-var im = require('istanbul-middleware'),
 
+
+
+
+
+
+    var im= require('istanbul-middleware');
+
+
+
+    //im.hookLoader('../lib');
     express = require('express'),
     app = express();
 
