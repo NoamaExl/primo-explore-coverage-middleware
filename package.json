@@ -11,9 +11,12 @@
     "url": "primo-explore-coverage-middleware"
   },
   "dependencies": {
+    "body-parser": "1.18.3",
+    "byzantine": "^1.1.0",
+    "istanbul-diff": "^1.1.4",
     "istanbul-middleware": "0.2.2",
-    "lowdb": "1.00"
-
+    "lowdb": "^1.0.0",
+    "underscore": "^1.9.1"
   },
   "author": "noamamit92",
   "license": "MIT"
