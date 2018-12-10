@@ -14,6 +14,7 @@
 
     const adapter = new FileSync('db.json')
     const db = low(adapter)
+
     var _ = require('underscore');
 
     var istanbulDiff = require('istanbul-diff');
@@ -26,6 +27,9 @@
     total = express()
     app.use(bodyParser.json({limit: '50mb', extended: true}));
 
+
+    db.defaults({})
+        .write()
 
     app.use('/coverage', im.createHandler());
     total.use('/total', imTotal.createHandler());
@@ -48,7 +52,7 @@ app.listen(8005);
     // respond with "hello world" when a GET request is made to the homepage
     app.post('/delta', function (req, res) {
         var current =  JSON.stringify(req.body, null, 2);
-        var testName = req.fileName;
+        var testName = req.query.fileName;
         var coverageJson = JSON.parse(current)
         var files =  _.keys(coverageJson);
 
@@ -70,8 +74,12 @@ app.listen(8005);
 
     // respond with "hello world" when a GET request is made to the homepage
     app.get('/select', function (req, res) {
-        res.send('hello world')
+        var testName = req.query.fileName;
+        var tests = db.get(testName).value();
+        res.send(tests);
     })
+
+
 
 
     console.log('app started');
