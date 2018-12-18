@@ -2,7 +2,7 @@
   "name": "primo-explore-coverage-middleware",
   "version": "1.0.0",
   "description": "node server to aggregate and map source files to tests",
-  "main": "main.js",
+  "main": "coverage.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

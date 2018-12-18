@@ -24,7 +24,7 @@
     //im.hookLoader('../lib');
     express = require('express'),
     app = express();
-    total = express()
+
     app.use(bodyParser.json({limit: '50mb', extended: true}));
 
 
@@ -32,21 +32,13 @@
         .write()
 
     app.use('/coverage', im.createHandler());
-    total.use('/total', imTotal.createHandler());
 
 //add your router and other endpoints
 //...
 
-total.listen(8006);
+
 app.listen(8005);
 
-    // POST method route
-    app.post('/baseline', function (req, res) {
-
-        baseline = JSON.stringify(req.body, null, 2)
-        res.send('BASELINE WAS SET');
-
-    })
 
 
     // respond with "hello world" when a GET request is made to the homepage
