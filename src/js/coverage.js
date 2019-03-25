@@ -57,10 +57,13 @@ app.listen(8005);
                 db.set(file,[]).write();
             }
 
-            db.get(file)
-                .push(testName)
-                .write()
+            var tests = db.get(file);
+            if(tests.indexOf(testName) === -1){
+                tests.push(testName)
+                    .write()
             }
+
+        }
         res.send('Delta was saved to db after parsing');
     })
 
