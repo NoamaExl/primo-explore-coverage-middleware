@@ -49,17 +49,14 @@ app.listen(8005);
         var files =  _.keys(coverageJson);
 
 
-
         for (var i=0;i< files.length ;i++) {
             var file = files[i];
 
             if(!db.has(file).value()){
                 db.set(file,[]).write();
             }
-
-            var tests = db.get(file);
-            if(tests.indexOf(testName) === -1){
-                tests.push(testName)
+            if(db.get(file).value().indexOf(testName) === -1){
+                db.get(file).push(testName)
                     .write()
             }
 
